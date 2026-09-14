@@ -17,7 +17,7 @@ AI開発の学習用チュートリアルとして作成した簡易版です。
 ## 技術スタック
 
 - Python 3.11
-- Django 5.x
+- Django 4.2.4
 - pandas / numpy(集計・分析)
 - Chart.js(グラフ描画、CDN経由)
 - Docker / docker-compose
