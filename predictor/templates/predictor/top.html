@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ロト6予想</title>
+</head>
+
+<body>
+    <h1>今回の予想(3パターン)</h1>
+    <div style="display: flex; gap: 20px;">
+        {% for pattern_name, numbers in predictions.items %}
+        <div style="border: 1px solid #ccc; padding: 16px; border-radius: 8px;">
+            <h2>{{ pattern_name }}</h2>
+            <p style="font-size: 1.5em;">
+                {% for n in numbers %}{{ n }}{% if not forloop.last %} - {% endif %}{% endfor %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if user.is_staff %}
+    <hr style="margin-top: 40px;">
+    <p>
+        <a href="{% url 'admin:add_draw' %}">抽選結果を登録</a> ｜
+        <a href="{% url 'admin:analytics' %}">分析ダッシュボードを見る</a>
+    </p>
+    {% endif %}
+</body>
+
+</html>

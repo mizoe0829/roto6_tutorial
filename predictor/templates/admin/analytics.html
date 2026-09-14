@@ -1,0 +1,65 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<p>
+    <a href="{% url 'admin:add_draw' %}">抽選結果を登録する</a> ｜
+    <a href="/">トップページへ戻る</a>
+</p>
+<h1>ロト6 分析ダッシュボード</h1>
+
+{% if not has_data %}
+<p>データがありません。</p>
+{% else %}
+<h2>サマリー</h2>
+<ul>
+    <li>総抽選回数: {{ stats.total_draws }}</li>
+    <li>平均値: {{ stats.mean }}</li>
+    <li>標準偏差: {{ stats.std }}</li>
+    <li>最頻出数字: {{ stats.most_common }}</li>
+    <li>期間: {{ stats.date_range.0 }} 〜 {{ stats.date_range.1 }}</li>
+</ul>
+
+<h2>数字別出現頻度</h2>
+<canvas id="freqChart" width="800" height="300"></canvas>
+
+<h2>ボーナス数字 出現頻度</h2>
+<canvas id="bonusChart" width="800" height="300"></canvas>
+
+{{ freq_labels|json_script:"freq-labels-data" }}
+{{ freq_values|json_script:"freq-values-data" }}
+{{ bonus_labels|json_script:"bonus-labels-data" }}
+{{ bonus_values|json_script:"bonus-values-data" }}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+    const freqLabels = JSON.parse(document.getElementById('freq-labels-data').textContent);
+    const freqValues = JSON.parse(document.getElementById('freq-values-data').textContent);
+    const bonusLabels = JSON.parse(document.getElementById('bonus-labels-data').textContent);
+    const bonusValues = JSON.parse(document.getElementById('bonus-values-data').textContent);
+
+    new Chart(document.getElementById('freqChart'), {
+        type: 'bar',
+        data: {
+            labels: freqLabels,
+            datasets: [{
+                label: '出現回数',
+                data: freqValues,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)'
+            }]
+        }
+    });
+
+    new Chart(document.getElementById('bonusChart'), {
+        type: 'bar',
+        data: {
+            labels: bonusLabels,
+            datasets: [{
+                label: 'ボーナス出現回数',
+                data: bonusValues,
+                backgroundColor: 'rgba(255, 99, 132, 0.6)'
+            }]
+        }
+    });
+</script>
+{% endif %}
+{% endblock %}

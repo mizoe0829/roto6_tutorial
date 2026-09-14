@@ -1,0 +1,80 @@
+[
+  {
+    "draw_number": 1850,
+    "draw_date": "2024-08-01",
+    "numbers": [
+      3,
+      12,
+      19,
+      27,
+      34,
+      41
+    ],
+    "bonus_number": 8
+  },
+  {
+    "draw_number": 1851,
+    "draw_date": "2024-08-05",
+    "numbers": [
+      5,
+      11,
+      22,
+      28,
+      33,
+      39
+    ],
+    "bonus_number": 15
+  },
+  {
+    "draw_number": 1852,
+    "draw_date": "2024-08-08",
+    "numbers": [
+      2,
+      12,
+      19,
+      25,
+      31,
+      40
+    ],
+    "bonus_number": 7
+  },
+  {
+    "draw_number": 1853,
+    "draw_date": "2024-08-12",
+    "numbers": [
+      7,
+      14,
+      19,
+      22,
+      30,
+      41
+    ],
+    "bonus_number": 3
+  },
+  {
+    "draw_number": 1854,
+    "draw_date": "2024-08-15",
+    "numbers": [
+      1,
+      12,
+      20,
+      27,
+      33,
+      38
+    ],
+    "bonus_number": 9
+  },
+  {
+    "draw_number": 1855,
+    "draw_date": "2024-08-22",
+    "numbers": [
+      2,
+      6,
+      16,
+      23,
+      32,
+      39
+    ],
+    "bonus_number": 13
+  }
+]
